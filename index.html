@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNSEEN CLO | Premium Fashion</title>
+<meta name="description" content="UNSEEN CLO — premium shirts, t-shirts and pants at everyday prices.">
+<meta name="theme-color" content="#111111">
+<style>
+:root{--black:#111;--white:#fff;--muted:#666;--line:#e9e9e9;--accent:#b38a2e;--bg:#fafafa}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--black);background:var(--bg)}
+a{text-decoration:none;color:inherit} button{font:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 5%;gap:20px}
+.logo{height:48px;width:auto;object-fit:contain}.nav{display:flex;gap:25px;font-size:14px}.nav a:hover{text-decoration:underline}
+.actions{display:flex;align-items:center;gap:14px;font-size:14px}.cart{background:#111;color:#fff;border-radius:20px;padding:8px 13px}
+.hero{min-height:430px;display:grid;place-items:center;background:linear-gradient(90deg,#101010,#252525 55%,#111);color:#fff;padding:50px 7%}
+.hero-inner{width:min(1100px,100%);display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:.95;margin:0 0 18px}.hero p{font-size:17px;color:#ddd;line-height:1.6}
+.btn{border:0;border-radius:6px;padding:13px 20px;font-weight:700}.btn-light{background:#fff;color:#111}.btn-dark{background:#111;color:#fff;width:100%}.btn-gold{background:var(--accent);color:#fff;width:100%;margin-top:10px}
+.hero-card{background:#fff1;border:1px solid #ffffff22;border-radius:16px;padding:18px;text-align:center}.hero-card img{width:100%;height:310px;object-fit:cover;border-radius:12px}
+.container{width:min(1200px,92%);margin:auto}.section{padding:50px 0}.section h2{font-size:28px;margin:0 0 22px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cat{background:#fff;border:1px solid var(--line);padding:22px;border-radius:12px;text-align:center;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 8px 25px #0000000c}
+.card img{width:100%;height:310px;object-fit:cover;background:#f1f1f1}.card-body{padding:14px}.card h3{margin:0 0 8px;font-size:16px}.price{font-weight:800;font-size:18px}.muted{color:var(--muted);font-size:13px}.view{display:inline-block;margin-top:10px;font-weight:700;font-size:13px}
+.badge{position:absolute;top:10px;left:10px;background:#111;color:#fff;padding:6px 9px;border-radius:5px;font-size:11px}
+footer{background:#111;color:#fff;padding:35px 5%;margin-top:30px}.footer-inner{width:min(1200px,100%);margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#ccc}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:50;padding:25px;overflow:auto}.modal.show{display:flex;align-items:center;justify-content:center}.product{background:#fff;width:min(1050px,100%);border-radius:16px;overflow:hidden;position:relative}.close{position:absolute;right:15px;top:12px;border:0;background:#fff;border-radius:50%;font-size:24px;width:38px;height:38px;z-index:2}.product-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;padding:28px}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.gallery img{width:100%;height:260px;object-fit:cover;border-radius:10px;background:#f3f3f3}.detail h2{font-size:32px;margin:0 0 10px}.detail .bigprice{font-size:26px;font-weight:800;margin:15px 0}.select-row{margin:18px 0}.sizes{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.size{border:1px solid #bbb;background:#fff;padding:10px 15px;border-radius:6px}.size.active{background:#111;color:#fff;border-color:#111}.features{border-top:1px solid var(--line);margin-top:22px;padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px}
+@media(max-width:850px){.nav{display:none}.hero-inner,.product-layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.card img{height:250px}.hero-card{display:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.card img{height:210px}.product-layout{padding:18px}.gallery img{height:180px}}
+
+.promo-bar{background:#111;color:#fff;text-align:center;padding:10px 16px;font-size:14px;font-weight:700;letter-spacing:.2px}
+.promo-bar span{color:#d2aa4a}
+</style>
+</head>
+<body>
+<div class="promo-bar">Shop ₹1,999 → Get <span>₹500 FREE Coupon</span></div>
+
+<header>
+  <a href="#"><img class="logo" src="logo.png" alt="UNSEEN CLO logo"></a>
+  <nav class="nav">
+    <a href="#shirts">Shirts</a><a href="#pants">Pants</a><a href="#new">New Arrivals</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="actions"><span>♡</span><span class="cart">Cart <b id="cartCount">0</b></span></div>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div>
+   <div class="muted" style="color:#c9c9c9">UNSEEN CLO</div>
+   <h1>Premium Men's Fashion.</h1>
+   <p>Clean styles, everyday comfort and simple pricing. Explore our demo collection of shirts and pants.</p>
+   <a class="btn btn-light" href="#new">Shop Now →</a>
+  </div>
+  <div class="hero-card">
+   <img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=85" alt="Men's fashion">
+  </div>
+ </div>
+</section>
+
+<main class="container">
+<section class="section">
+ <h2>Shop by Category</h2>
+ <div class="categories">
+  <a class="cat" href="#shirts">👔 Shirts</a><a class="cat" href="#pants">👖 Pants</a><a class="cat" href="#new">✨ New Arrivals</a><a class="cat" href="#new">🔥 Offers</a>
+ </div>
+</section>
+
+<section class="section" id="shirts">
+ <h2>Trending Shirts</h2>
+ <div class="grid" id="shirtGrid"></div>
+</section>
+
+<section class="section" id="pants">
+ <h2>Trending Pants</h2>
+ <div class="grid" id="pantGrid"></div>
+</section>
+
+<section class="section" id="about">
+ <h2>About UNSEEN CLO</h2>
+ <p class="muted" style="max-width:760px;line-height:1.8">UNSEEN CLO is a demo fashion storefront concept. Product names, photos, prices and details can be replaced later with your actual sourced products.</p>
+</section>
+</main>
+
+<footer id="contact">
+ <div class="footer-inner">
+  <div><b>UNSEEN CLO</b><br><span>Look Good. Spend Less.</span></div>
+  <div>WhatsApp • Instagram • Email</div>
+  <div>© 2026 UNSEEN CLO</div>
+ </div>
+</footer>
+
+<div class="modal" id="modal">
+ <div class="product">
+  <button class="close" onclick="closeProduct()">×</button>
+  <div class="product-layout">
+   <div class="gallery" id="gallery"></div>
+   <div class="detail">
+    <div class="muted" id="productCategory"></div>
+    <h2 id="productName"></h2>
+    <div class="bigprice" id="productPrice"></div>
+    <p id="productDescription" style="line-height:1.7;color:#555"></p>
+    <div class="select-row"><b>Colour:</b> <span id="productColor"></span></div>
+    <div class="select-row"><b>Size</b><div class="sizes" id="sizes"></div></div>
+    <button class="btn btn-dark" onclick="addToCart()">Add to Cart</button>
+    <button class="btn btn-gold" onclick="buyNow()">Buy Now</button>
+    <div class="features">
+      <div>✓ Comfortable fabric</div><div>✓ Regular / relaxed fit</div><div>✓ Easy care</div><div>✓ Everyday wear</div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+const products = [
+ {id:1,type:'Shirt',name:'Classic Black Shirt',price:599,color:'Black',desc:'A clean everyday shirt designed for casual, office and smart-casual looks.',img:'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=85'},
+ {id:2,type:'Shirt',name:'Premium White Shirt',price:699,color:'White',desc:'Minimal white shirt with a versatile look for everyday styling.',img:'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=900&q=85'},
+ {id:3,type:'Shirt',name:'Casual Blue Shirt',price:599,color:'Blue',desc:'Easy-going blue shirt for daily wear and weekend outfits.',img:'https://images.unsplash.com/photo-1608234807905-4466023792f5?auto=format&fit=crop&w=900&q=85'},
+ {id:4,type:'Shirt',name:'Olive Green Shirt',price:699,color:'Olive',desc:'A modern olive tone that works well with jeans and casual pants.',img:'https://images.unsplash.com/photo-1598032895397-b9472444bf93?auto=format&fit=crop&w=900&q=85'},
+ {id:5,type:'Shirt',name:'Checked Casual Shirt',price:649,color:'Blue / White',desc:'Classic checked pattern with a relaxed everyday feel.',img:'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=900&q=85'},
+ {id:6,type:'Pant',name:'Regular Black Pant',price:799,color:'Black',desc:'Clean regular-fit black pants designed for daily styling.',img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=900&q=85'},
+ {id:7,type:'Pant',name:'Beige Casual Pant',price:849,color:'Beige',desc:'Neutral beige pants for simple casual outfits.',img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=900&q=85'},
+ {id:8,type:'Pant',name:'Dark Blue Jeans',price:899,color:'Dark Blue',desc:'Everyday dark denim with a versatile straight fit.',img:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=85'},
+ {id:9,type:'Pant',name:'Grey Formal Pant',price:799,color:'Grey',desc:'Smart grey trousers suitable for office and formal looks.',img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=900&q=85'},
+ {id:10,type:'Pant',name:'Relaxed Fit Pant',price:849,color:'Olive',desc:'Relaxed-fit pants for a comfortable modern silhouette.',img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85'}
+];
+
+let selectedProduct=null, cart=0;
+const extraViews = (p)=>[
+ p.img,
+ p.img,
+ p.img,
+ p.img
+];
+
+function card(p){
+ return `<article class="card" onclick="openProduct(${p.id})">
+  <span class="badge">${p.type}</span>
+  <img src="${p.img}" alt="${p.name}" loading="lazy">
+  <div class="card-body"><h3>${p.name}</h3><div class="price">₹${p.price}</div><div class="muted">Available sizes S–XXL</div><span class="view">View 4 angles →</span></div>
+ </article>`;
+}
+document.getElementById('shirtGrid').innerHTML=products.filter(p=>p.type==='Shirt').map(card).join('');
+document.getElementById('pantGrid').innerHTML=products.filter(p=>p.type==='Pant').map(card).join('');
+
+function openProduct(id){
+ selectedProduct=products.find(p=>p.id===id);
+ document.getElementById('productCategory').textContent=selectedProduct.type;
+ document.getElementById('productName').textContent=selectedProduct.name;
+ document.getElementById('productPrice').textContent='₹'+selectedProduct.price;
+ document.getElementById('productDescription').textContent=selectedProduct.desc;
+ document.getElementById('productColor').textContent=selectedProduct.color;
+ document.getElementById('gallery').innerHTML=extraViews(selectedProduct).map((src,i)=>`<div><img src="${src}" alt="${selectedProduct.name} view ${i+1}"><div class="muted" style="padding:5px 2px">View ${['Front','Back','Left','Right'][i]}</div></div>`).join('');
+ document.getElementById('sizes').innerHTML=['S','M','L','XL','XXL'].map((s,i)=>`<button class="size ${i===1?'active':''}" onclick="selectSize(this)">${s}</button>`).join('');
+ document.getElementById('modal').classList.add('show');
+}
+function closeProduct(){document.getElementById('modal').classList.remove('show')}
+function selectSize(btn){document.querySelectorAll('.size').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function addToCart(){cart++;document.getElementById('cartCount').textContent=cart;alert(selectedProduct.name+' added to cart.')}
+function buyNow(){alert('Demo Buy Now: '+selectedProduct.name+' — ₹'+selectedProduct.price)}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeProduct()});
+</script>
+</body>
+</html>
